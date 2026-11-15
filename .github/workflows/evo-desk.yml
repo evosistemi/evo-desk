@@ -1,0 +1,14 @@
+name: Evo Desk
+
+# Compila Evo Desk per Windows, macOS e Android. Si avvia a mano e non pubblica niente:
+# i programmi restano negli artefatti della compilazione.
+on:
+  workflow_dispatch:
+
+jobs:
+  compila:
+    uses: ./.github/workflows/flutter-build.yml
+    secrets: inherit
+    with:
+      upload-artifact: true
+      upload-tag: "evo"
