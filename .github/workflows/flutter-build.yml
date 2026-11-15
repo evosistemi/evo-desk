@@ -474,7 +474,9 @@ jobs:
           sed -i '/dpiAware/d' res/manifest.xml
           pushd ./libs/portable
           pip3 install -r requirements.txt
-          python3 ./generate.py -f ../../rustdesk/ -o . -e ../../rustdesk/rustdesk.exe
+          cp -r ../../rustdesk ../../evodesk-dist
+          mv ../../evodesk-dist/rustdesk.exe ../../evodesk-dist/evodesk.exe
+          python3 ./generate.py -f ../../evodesk-dist/ -o . -e ../../evodesk-dist/evodesk.exe
           popd
           mkdir -p ./SignOutput
           mv ./target/release/rustdesk-portable-packer.exe ./SignOutput/rustdesk-${{ env.VERSION }}-${{ matrix.job.arch }}.exe
